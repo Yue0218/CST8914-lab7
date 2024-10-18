@@ -32,7 +32,8 @@
         <div class="control">
           <!-- Associated the label with input using for and id -->
           <!-- Added aria-required to indicate required field -->
-          <label for="name">Full name <span class="required">*</span></label><input id="name" name="name" type="text" aria-required="true" />
+          <label for="name">Full name <span class="required">*</span></label>
+          <input id="name" name="name" type="text" aria-required="true" />
         </div>
         <div class="control">
           <!-- Added aria-describedby for extra instructions -->
@@ -56,6 +57,11 @@
         <div class="control">
           <input name="validate" type="hidden" value="1" /><input type="submit" value="Register" />
         </div>
+        <!-- Error Message Container -->
+        <fieldset class="errors" aria-live="assertive" aria-labelledby="errorTitle" hidden>
+            <legend id="errorTitle">Errors</legend>
+            <ul></ul>
+        </fieldset>
       </form>
       
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -133,6 +139,9 @@
       
             if ($('.error').length === 0) {
               return alert('All inputs are valid.');
+            } else{
+               // Move focus to error container
+               $('.errors').focus();
             }
           }
         });
